@@ -18,7 +18,7 @@ export const routes: Routes = [
     component: SingleTicketPage
   },
   {
-    path: 'tickets/new',
+    path: 'new-ticket',
     component: NewTicketPage
   },
 ];

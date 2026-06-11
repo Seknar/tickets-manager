@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid var(--gray-200);
+    padding: 0.5rem;
+    min-width: 10%;
+    max-width: 10%;
+}
+
+th {
+    background-color: var(--gray-400);
+    color: var(--gray-700);
+}
+
+td > .options {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}

@@ -1,1 +1,23 @@
-<p>create-ticket-form works!</p>
+<form (submit)="onSubmit($event)">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" [formField]="ticketForm.title" placeholder="Title" />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea [formField]="ticketForm.description" placeholder="Description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="customerName">Customer Name</label>
+    <input type="text" [formField]="ticketForm.customerName" placeholder="Customer Name" />
+  </div>
+  <div class="form-group">
+    <label for="priority">Priority</label>
+    <div class="priority-options">
+        <input type="radio" [formField]="ticketForm.priority" value="low" /> Low
+        <input type="radio" [formField]="ticketForm.priority" value="medium" /> Medium
+        <input type="radio" [formField]="ticketForm.priority" value="high" /> High
+    </div>
+  </div>
+  <button type="submit">Create Ticket</button>
+</form>

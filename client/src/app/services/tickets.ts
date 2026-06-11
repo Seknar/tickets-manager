@@ -13,6 +13,13 @@ export interface Ticket {
   createdAt: string;
 }
 
+export interface CreateTicket {
+  title: string;
+  description: string;
+  customerName: string;
+  priority: 'low' | 'medium' | 'high';
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,5 +30,9 @@ export class TicketsService {
 
   getTickets(): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(this.apiUrl);
+  }
+
+  postTicket(ticket: CreateTicket): Observable<Ticket[]> {
+    return this.http.post<Ticket[]>(this.apiUrl, ticket);
   }
 }
