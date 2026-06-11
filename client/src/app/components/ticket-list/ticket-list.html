@@ -22,11 +22,7 @@
             <td>{{ticket.priority}}</td>
             <td>{{ticket.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>
-                <div class="options">
-                    <a routerLink="/tickets/{{ticket.id}}">View</a>
-                    <a routerLink="/tickets/{{ticket.id}}/edit">Edit</a>
-                    <!-- <a (click)="deleteTicket(ticket.id)">Delete</a> -->
-                </div>
+                <a routerLink="/tickets/{{ticket.id}}">🔧</a>
             </td>
         </tr>
     } @empty {

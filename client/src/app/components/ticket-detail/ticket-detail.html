@@ -1,0 +1,31 @@
+<div class="ticket-detail">
+  @if (ticket(); as ticket) {
+    <h2>Ticket #{{ ticket.id }}</h2>
+
+    <p><strong>Title:</strong> {{ ticket.title }}</p>
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p><strong>Customer Name:</strong> {{ ticket.customerName }}</p>
+    <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+    <p><strong>Created At:</strong> {{ ticket.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+
+    <div>
+      <strong>Status:</strong>
+
+      @if (editingStatus()) {
+        <select [value]="selectedStatus()" (change)="onStatusChange($event)">
+          <option value="open">open</option>
+          <option value="in_progress">in progress</option>
+          <option value="closed">closed</option>
+        </select>
+
+        <button type="button" (click)="saveStatus()">✔️ Save</button>
+        <button type="button" (click)="cancelEditingStatus()">❌ Cancel</button>
+      } @else {
+        <span> {{ ticket.status.replace('_', ' ') }}</span>
+        <button type="button" (click)="startEditingStatus()">🔧 Edit</button>
+      }
+    </div>
+  } @else {
+    <p>Loading ticket...</p>
+  }
+</div>

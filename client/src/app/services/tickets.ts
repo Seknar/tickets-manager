@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export type TicketStatus = 'open' | 'in-progress' | 'closed';
+export type TicketPriority = 'low' | 'medium' | 'high';
 
 export interface Ticket {
   id: number;
   title: string;
   description: string;
   customerName: string;
-  status: 'open' | 'in-progress' | 'closed';
-  priority: 'low' | 'medium' | 'high';
+  status: TicketStatus;
+  priority: TicketPriority;
   createdAt: string;
 }
 
@@ -17,7 +19,11 @@ export interface CreateTicket {
   title: string;
   description: string;
   customerName: string;
-  priority: 'low' | 'medium' | 'high';
+  priority: TicketPriority;
+}
+
+export interface UpdateTicket {
+  status: TicketStatus;
 }
 
 @Injectable({
@@ -32,7 +38,15 @@ export class TicketsService {
     return this.http.get<Ticket[]>(this.apiUrl);
   }
 
+  getTicketById(id: number): Observable<Ticket> {
+    return this.http.get<Ticket>(`${this.apiUrl}/${id}`);
+  }
+
   postTicket(ticket: CreateTicket): Observable<Ticket[]> {
     return this.http.post<Ticket[]>(this.apiUrl, ticket);
+  }
+
+  patchTicketStatus(id: number, status: TicketStatus): Observable<Ticket> {
+    return this.http.patch<Ticket>(`${this.apiUrl}/${id}/status`, { status });
   }
 }
