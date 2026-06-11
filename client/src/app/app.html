@@ -1,0 +1,139 @@
+<style>
+  :host {
+    background: linear-gradient(
+      180deg,
+      oklch(41.973% 0.16629 17.516),
+      oklch(38.293% 0.19522 307.053)
+    );
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+    --gray-200: oklch(86.205% 0.01731 304.592);
+
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol';
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    height: 100dvh;
+  }
+
+  h1 {
+    font-size: 3.125rem;
+    color: var(--gray-200);
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family:
+      'Inter Tight',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol';
+  }
+
+  p {
+    margin: 0;
+  }
+
+  header {
+    min-height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+  }
+
+  main {
+    width: 100%;
+    min-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+    color: var(--gray-200);
+  }
+
+  .angular-logo {
+    max-width: 9.2rem;
+    color: var(--gray-200);;
+  }
+
+  .menu > ul {
+    display: inline-flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .menu > ul > li {
+    color: var(--gray-200);
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  .content h1 {
+    margin-top: 1.75rem;
+  }
+
+  .content p {
+    margin-top: 1.5rem;
+  }
+
+  @media screen and (max-width: 650px) {
+    .content {
+      flex-direction: column;
+      width: max-content;
+    }
+  }
+</style>
+
+<header>
+  <div class="logo">
+    <img src="assets/logo.svg" alt="Ticket Manager Logo" class="angular-logo">
+  </div>
+  <div class="menu">
+    <ul>
+      <li><a routerLink="/tickets">List</a></li>
+      <li><a routerLink="/new-tickets">Create</a></li>
+    </ul>
+  </div>
+</header>
+<main class="main">
+  <div class="content">
+    <router-outlet />
+  </div>
+</main>
